@@ -5,7 +5,6 @@ import {
   getAllProducts,
   getFeaturedProducts,
   getProductsByCategory,
-  getRecommendedProducts,
   toggleFeaturedProduct,
   updateProduct,
 } from "../controllers/product.controller.js";
