@@ -20,7 +20,7 @@ const __dirname = path.resolve();
 app.use(express.json({ limit: "10mb" }));
 
 app.use(cors({
-  origin: true,
+  origin: "https://retropol-ruddy.vercel.app", // Frontend URL
   credentials: true,
 }));
 
