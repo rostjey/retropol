@@ -14,7 +14,6 @@ import { protectRoute, adminRoute } from "../middleware/auth.middleware.js";
 const router = express.Router();
 
 // Admin panelden ürünleri yönetmek için
-//router.get("/",protectRoute, adminRoute,getAllProducts);    kullanıcıya taşındı
 router.post("/", protectRoute, adminRoute,createProduct);  
 router.put("/:id", protectRoute, adminRoute, updateProduct); // fiyat güncelleme gibi işlemler için
 router.delete("/:id", protectRoute, adminRoute, deleteProduct);
