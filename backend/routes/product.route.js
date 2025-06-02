@@ -24,7 +24,6 @@ router.patch("/:id", protectRoute, adminRoute, toggleFeaturedProduct);
 router.get("/",getAllProducts); 
 router.get("/featured", getFeaturedProducts);
 router.get("/category/:category", getProductsByCategory);
-//router.get("/recommendations", getRecommendedProducts);
 
 export default router;
 // Bu dosya, ürünlerle ilgili rotaları tanımlar. Admin paneli ve kullanıcı tarafı için farklı işlemler içerir.
