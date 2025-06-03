@@ -24,7 +24,10 @@ export default function HomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+        // DÜZELTİLMİŞ HALİ
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`, { 
+         withCredentials: true // 👈 Bu kritik!
+     });
         const products = res.data.products;
 
         const grouped = {};

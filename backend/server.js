@@ -57,6 +57,15 @@ app.use((req, res, next) => {
 });
 // gelen her istek loglanacak
 
+// BU NE AMK YA EMİN MİYİZ 
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // HTTPS için zorunlu
+  sameSite: "none", // Cross-site cookie için
+  domain: ".onrender.com", // Render domain'i
+  maxAge: 1000 * 60 * 60 * 24 * 7 // 1 hafta
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
