@@ -23,7 +23,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,                // sadece https (Render'da zorunlu)
     sameSite: "none",            // cross-site cookie
-    domain: ".vercell.app", // vercel için gerekli
+    domain: 'retropol-ruddy.vercel.app',// Tam domain vercel için gerekli
     maxAge: 15 * 60 * 1000,
     //proxy: isProduction // 👈 Render için kritik
   });
@@ -32,7 +32,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
-    domain: ".vercell.app", // vercel için gerekli
+    domain: 'retropol-ruddy.vercel.app', // Tam domain vercel için gerekli
     maxAge: 7 * 24 * 60 * 60 * 1000,
     //proxy: isProduction // 👈 Render için kritik
   });
@@ -150,7 +150,7 @@ export const refreshToken = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      domain: ".vercel.app", // vercel için gerekli
+      domain: 'retropol-ruddy.vercel.app', // Tam domain vercel için gerekli
       maxAge: 15 * 60 * 1000,
       //proxy: isProduction // 👈 Render için kritik
     });
