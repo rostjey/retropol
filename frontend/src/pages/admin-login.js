@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router"; // yönlendirme için
+//import { useRouter } from "next/router"; // yönlendirme için
+import { useRouter } from "next/navigation"; // Next.js 13+ için next/router değil next/navigation kullanın
 
 const AdminLogin = () => {
   const router = useRouter(); // hook'u başlat
@@ -17,21 +18,27 @@ const AdminLogin = () => {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         { email, password },
-        { withCredentials: true },
+        { withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'}
+        },
         { 
           email: email.trim(), // trim ekleyin
           password: password.trim() // trim ekleyin
         },
       );
-
-      alert("Admin girişi başarılı!");
-
+      if (res.data.success) {
+        alert("Admin girişi başarılı!");
+        setTimeout(() => router.push("/admin"), 1000);
+      } else {
+        alert("Email veya şifre yanlış!");
+      }
       // 🔁 Admin paneline yönlendir
-      router.push("/admin");
+      //router.push("/admin");
     } catch (error) {
       console.error("Hata detayı:", error.response?.data); // 👈 Detaylı hata
       console.error("🚫 Giriş başarısız:", error);
-      alert("Email veya şifre yanlış!");
+      alert("Bir hata oluştu.");
     }
   };
 
