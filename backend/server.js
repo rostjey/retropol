@@ -21,8 +21,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-app.use(cors(corsOptions)); //bu satırı deepseek ekledi
-
 app.use(express.json({ limit: "10mb" }));
 
 app.use(cors({
