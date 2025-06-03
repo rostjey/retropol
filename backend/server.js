@@ -21,11 +21,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
 
+// Üretim ortamı için MUTLAKA ekleyin (Render'da çalışıyorsanız ZORUNLU)
+app.set('trust proxy', 1); // Reverse proxy desteği
+
+// CORS ayarları
 app.use(cors({
   origin: "https://retropol-ruddy.vercel.app", // Frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH"] ,// İzin verilen metodlar
-  allowedHeaders: ["Content-Type", "Authorization"]//bu satırı deepseek ekledi 
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]//bu satırı deepseek ekledi 
 }));
 
 app.use(express.json({ limit: "10mb" }));
