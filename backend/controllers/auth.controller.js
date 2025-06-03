@@ -75,47 +75,28 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && (await user.comparePassword(password))) {
-    
       const { accessToken, refreshToken } = generateTokens(user._id);
       await storeRefreshToken(user._id, refreshToken);
 
-      res.header('Access-Control-Allow-Origin', 'https://retropol-ruddy.vercel.app');
-      res.header('Access-Control-Allow-Credentials', 'true');
-      console.log("✅ Tokenlar oluşturuldu:", { accessToken, refreshToken });
-
-
       setCookies(res, accessToken, refreshToken);
 
-      return res.status(200).json({
+      const responsePayload = {
         success: true,
         user: {
           _id: user._id,
           email: user.email,
-          role: user.role
-        }
-      });
+          role: user.role,
+        },
+      };
 
+      console.log("📤 Backend'ten dönen JSON:", responsePayload);
+
+      return res.status(200).json(responsePayload);
     } else {
       res.status(400).json({ message: "Invalid email or password" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
-  }
-};
-
-export const logout = async (req, res) => {
-  try {
-    const refreshToken = req.cookies.refreshToken;
-    if (refreshToken) {
-      const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
-      await redis.del(`refresh_token:${decoded.userId}`);
-    }
-
-    res.clearCookie("accessToken");
-    res.clearCookie("refreshToken");
-    res.json({ message: "Logged out successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
