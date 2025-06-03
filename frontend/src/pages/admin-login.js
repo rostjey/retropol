@@ -19,8 +19,8 @@ const AdminLogin = () => {
         { email, password },
         { withCredentials: true },
         { 
-          email: email.trim(), // 👈 trim ekleyin
-          password: password.trim() // 👈 trim ekleyin
+          email: email.trim(), // trim ekleyin
+          password: password.trim() // trim ekleyin
         },
       );
 
