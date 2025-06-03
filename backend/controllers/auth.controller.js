@@ -85,12 +85,25 @@ export const login = async (req, res) => {
 
       setCookies(res, accessToken, refreshToken);
 
-      res.json({
+      return res.status(200) // 👈 Status code ekleyin
+        .header('Access-Control-Allow-Credentials', 'true')
+        .cookie("accessToken", accessToken, cookieOptions)
+        .cookie("refreshToken", refreshToken, cookieOptions)
+        .json({
+          success: true, // 👈 Frontend'in kontrol edeceği flag
+          user: {
+            _id: user._id,
+            email: user.email,
+            role: user.role
+          }
+        });
+
+      /*res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
-      });
+      });*/
     } else {
       res.status(400).json({ message: "Invalid email or password" });
     }
