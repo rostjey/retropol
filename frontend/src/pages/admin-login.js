@@ -26,10 +26,11 @@ const AdminLogin = () => {
             'Content-Type': 'application/json'}
         },
       );
-      if (res.data.success) {
+      if (res.data?.success == true) {
         alert("Admin girişi başarılı!");
         setTimeout(() => router.push("/admin"), 1000);
       } else {
+        console.log("❌ Backend başarıyla yanıt verdi ama success yok:", res.data);
         alert("Email veya şifre yanlış!");
       }
       // 🔁 Admin paneline yönlendir
