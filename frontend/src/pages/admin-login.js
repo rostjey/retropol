@@ -17,7 +17,11 @@ const AdminLogin = () => {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         { email, password },
-        { withCredentials: true }
+        { withCredentials: true },
+        { 
+          email: email.trim(), // 👈 trim ekleyin
+          password: password.trim() // 👈 trim ekleyin
+        },
       );
 
       alert("Admin girişi başarılı!");
@@ -25,6 +29,7 @@ const AdminLogin = () => {
       // 🔁 Admin paneline yönlendir
       router.push("/admin");
     } catch (error) {
+      console.error("Hata detayı:", error.response?.data); // 👈 Detaylı hata
       console.error("🚫 Giriş başarısız:", error);
       alert("Email veya şifre yanlış!");
     }
