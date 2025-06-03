@@ -86,13 +86,15 @@ export const login = async (req, res) => {
 
       setCookies(res, accessToken, refreshToken);
 
-      res.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
+      return res.status(200).json({
+        success: true,
+        user: {
+          _id: user._id,
+          email: user.email,
+          role: user.role
+        }
       });
-      
+
     } else {
       res.status(400).json({ message: "Invalid email or password" });
     }
@@ -156,3 +158,13 @@ export const getProfile = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+console.log("📤 Backend'ten dönen JSON:", {
+  success: true,
+  user: {
+    _id: user._id,
+    email: user.email,
+    role: user.role
+  }
+});
+
