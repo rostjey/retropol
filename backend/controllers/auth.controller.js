@@ -87,8 +87,8 @@ export const login = async (req, res) => {
 
       return res.status(200) // 👈 Status code ekleyin
         .header('Access-Control-Allow-Credentials', 'true')
-        .cookie("accessToken", accessToken, cookieOptions)
-        .cookie("refreshToken", refreshToken, cookieOptions)
+        .cookie("accessToken", accessToken)
+        .cookie("refreshToken", refreshToken)
         .json({
           success: true, // 👈 Frontend'in kontrol edeceği flag
           user: {
