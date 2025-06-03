@@ -23,6 +23,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,                // sadece https (Render'da zorunlu)
     sameSite: "none",            // cross-site cookie
+    domain: ".onrender.com", // Render için gerekli
     maxAge: 15 * 60 * 1000,
   });
 
@@ -30,6 +31,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
+    domain: ".onrender.com", // Render için gerekli
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 };
@@ -74,6 +76,11 @@ export const login = async (req, res) => {
     
       const { accessToken, refreshToken } = generateTokens(user._id);
       await storeRefreshToken(user._id, refreshToken);
+
+      res.header('Access-Control-Allow-Origin', 'https://retropol-ruddy.vercel.app');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      console.log("✅ Tokenlar oluşturuldu:", { accessToken, refreshToken });
+
       setCookies(res, accessToken, refreshToken);
 
       res.json({
@@ -127,6 +134,7 @@ export const refreshToken = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      domain: ".onrender.com", // Render için gerekli
       maxAge: 15 * 60 * 1000,
     });
 
