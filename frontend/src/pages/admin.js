@@ -17,6 +17,34 @@ const AdminPage = () => {
 	const [products, setProducts] = useState([]);
 	const [editingProduct, setEditingProduct] = useState(null);
 
+	// Axios instance with credentials
+	const api = axios.create({
+		baseURL: process.env.NEXT_PUBLIC_API_URL,
+		withCredentials: true,
+		headers: {
+		  'Content-Type': 'application/json'
+		}
+	  });
+
+	  // Add request interceptor
+    api.interceptors.request.use(config => {
+      console.log('Sending request to:', config.url);
+      return config;
+    });
+
+	// Add response interceptor
+	api.interceptors.response.use(
+		response => response,
+		error => {
+		  if (error.response?.status === 401) {
+			alert('Oturum sona erdi. Lütfen tekrar giriş yapın.');
+			router.push('/admin-login');
+		  }
+		  return Promise.reject(error);
+		}
+	  );
+	const router = useRouter();	
+
 	const fetchProducts = async () => {
 		try {
 			const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
@@ -64,14 +92,14 @@ const AdminPage = () => {
 			withCredentials: true,
 		  });
 		  await fetchProducts(); // Güncelleme sonrası yeniden çek
-		  router.push("/featured"); // işlem bittikten sonra yönlendir
+		  //router.push("/featured"); // işlem bittikten sonra yönlendir
 		} catch (err) {
 		  console.error("Öne çıkarma hatası:", err);
 		  alert("Bir hata oluştu.");
 		}
 	};
 
-	const router = useRouter();
+	//const router = useRouter(); //öne çıkanları tekrar görmek istiyorsanız bu satırı ekleyin
 	  
 	  
 
