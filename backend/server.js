@@ -30,7 +30,7 @@ app.use(cors({
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH"] ,// İzin verilen metodlar
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],//bu satırı deepseek ekledi 
-  exposedHeaders: ["*", "Authorization"] // Token'ların frontend'de okunması için
+  exposedHeaders: ["*", "Authorization","set-cookie"] // Token'ların frontend'de okunması için
 }));
 
 // express.json() ayarını güncelleyin
