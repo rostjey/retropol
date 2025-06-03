@@ -17,17 +17,17 @@ const AdminLogin = () => {
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        { email, password },
-        { withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json'}
-        },
         { 
           email: email.trim(), // trim ekleyin
           password: password.trim() // trim ekleyin
         },
+        { withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'}
+        },
       );
       if (res.data.success) {
+        localStorage.setItem('accessToken', res.data.accessToken);
         alert("Admin girişi başarılı!");
         setTimeout(() => router.push("/admin"), 1000);
       } else {
