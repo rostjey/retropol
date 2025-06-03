@@ -29,10 +29,17 @@ app.use(cors({
   origin: "https://retropol-ruddy.vercel.app", // Frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH"] ,// İzin verilen metodlar
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]//bu satırı deepseek ekledi 
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],//bu satırı deepseek ekledi 
+  exposedHeaders: ["*", "Authorization"] // Token'ların frontend'de okunması için
 }));
 
-app.use(express.json({ limit: "10mb" }));
+// express.json() ayarını güncelleyin
+app.use(express.json({
+  limit: "10mb",
+  verify: (req, res, buf) => {
+    req.rawBody = buf.toString();
+  }
+}));
 
 app.use(cookieParser());
 

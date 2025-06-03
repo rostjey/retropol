@@ -23,7 +23,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,                // sadece https (Render'da zorunlu)
     sameSite: "none",            // cross-site cookie
-    domain: ".onrender.com", // Render için gerekli
+    domain: ".vercell.app", // vercel için gerekli
     maxAge: 15 * 60 * 1000,
     //proxy: isProduction // 👈 Render için kritik
   });
@@ -32,7 +32,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
-    domain: ".onrender.com", // Render için gerekli
+    domain: ".vercell.app", // vercel için gerekli
     maxAge: 7 * 24 * 60 * 60 * 1000,
     //proxy: isProduction // 👈 Render için kritik
   });
@@ -83,6 +83,7 @@ export const login = async (req, res) => {
       res.header('Access-Control-Allow-Credentials', 'true');
       console.log("✅ Tokenlar oluşturuldu:", { accessToken, refreshToken });
 
+
       setCookies(res, accessToken, refreshToken);
 
       return res.status(200) // 👈 Status code ekleyin
@@ -95,7 +96,7 @@ export const login = async (req, res) => {
             _id: user._id,
             email: user.email,
             role: user.role
-          }
+          },
         });
 
       /*res.json({
@@ -149,7 +150,7 @@ export const refreshToken = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      domain: ".onrender.com", // Render için gerekli
+      domain: ".vercel.app", // vercel için gerekli
       maxAge: 15 * 60 * 1000,
       //proxy: isProduction // 👈 Render için kritik
     });
