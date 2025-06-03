@@ -26,6 +26,8 @@ const AdminLogin = () => {
             'Content-Type': 'application/json'}
         },
       );
+      console.log("🚀 Login yanıtı (res.data):", res.data);
+
       if (res.data?.success === true) {
         alert("Admin girişi başarılı!");
         setTimeout(() => router.push("/admin"), 1000);
