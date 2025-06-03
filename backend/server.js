@@ -26,6 +26,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(cors({
   origin: "https://retropol-ruddy.vercel.app", // Frontend URL
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"] // İzin verilen metodlar
 }));
 
 app.use(cookieParser());
@@ -50,13 +51,15 @@ app.use("/api/cart", cartRoutes);
 // app.use("/api/analytics", analyticsRoutes); // grafik kısmı eklenecekse açarız
 
 // Eğer frontend dosyaları dist içinde ise üretim modunda render edilecek
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
+// Üretim ortamı kontrolünü güncelleyin
+//if (process.env.NODE_ENV === "production") {
+  //const frontendPath = path.join(__dirname, "../../frontend/dist"); // Render özel yolu
+ // app.use(express.static(frontendPath));
+  
+  //app.get("*", (req, res) => {
+ //   res.sendFile(path.join(frontendPath, "index.html"));
+  //});
+//}
 
 app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
