@@ -25,7 +25,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     sameSite: "none",            // cross-site cookie
     domain: ".onrender.com", // Render için gerekli
     maxAge: 15 * 60 * 1000,
-    proxy: isProduction // 👈 Render için kritik
+    //proxy: isProduction // 👈 Render için kritik
   });
 
   res.cookie("refreshToken", refreshToken, {
@@ -34,7 +34,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     sameSite: "none",
     domain: ".onrender.com", // Render için gerekli
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    proxy: isProduction // 👈 Render için kritik
+    //proxy: isProduction // 👈 Render için kritik
   });
 };
 
@@ -151,7 +151,7 @@ export const refreshToken = async (req, res) => {
       sameSite: "none",
       domain: ".onrender.com", // Render için gerekli
       maxAge: 15 * 60 * 1000,
-      proxy: isProduction // 👈 Render için kritik
+      //proxy: isProduction // 👈 Render için kritik
     });
 
     res.json({ message: "Token refreshed successfully" });
