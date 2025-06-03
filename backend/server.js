@@ -21,17 +21,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-// server.js'ye ekleyin
-app.options('*', cors(corsOptions));
-
-app.use(express.json({ limit: "10mb" }));
-
 app.use(cors({
   origin: "https://retropol-ruddy.vercel.app", // Frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH"] ,// İzin verilen metodlar
-  exposedHeaders: ["set-cookie"] //bu satırı deepseek ekledi 
+  allowedHeaders: ["Content-Type", "Authorization"]//bu satırı deepseek ekledi 
 }));
+
+app.use(express.json({ limit: "10mb" }));
 
 app.use(cookieParser());
 
