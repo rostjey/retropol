@@ -8,14 +8,18 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js";
-// import analyticsRoutes from "./routes/analytics.route.js"; // Opsiyonel
 
 import { connectDB } from "./lib/db.js";
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
-const __dirname = path.resolve();
 
 app.use(express.json({ limit: "10mb" }));
 
