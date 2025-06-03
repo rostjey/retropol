@@ -54,11 +54,6 @@ export default function HomePage() {
             ⭐ Öne Çıkanlar
           </button>
         </Link>
-        {/*<Link href="/recommendations">
-          <button className="bg-emerald-600 px-4 py-2 rounded hover:bg-emerald-500">
-            🤖 Önerilenler
-          </button>
-        </Link>*/}
 
         {/* Scroll butonları */}
         {CATEGORY_ORDER.map((cat) => (
