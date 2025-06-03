@@ -27,7 +27,6 @@ const AdminLogin = () => {
         },
       );
       if (res.data.success) {
-        localStorage.setItem('accessToken', res.data.accessToken);
         alert("Admin girişi başarılı!");
         setTimeout(() => router.push("/admin"), 1000);
       } else {
