@@ -34,7 +34,6 @@ const CreateProductForm = ({ onCreated }) => {
         form,
         { withCredentials: true }
       );
-      alert("Ürün başarıyla eklendi!");
       setForm({ name: "", description: "", price: "", category: "", image: "" });
       if (onCreated) onCreated(); // listeyi güncelle
     } catch (err) {

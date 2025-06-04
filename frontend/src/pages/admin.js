@@ -67,7 +67,6 @@ const AdminPage = () => {
           await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`, {
             withCredentials: true,
           });
-          alert("Ürün silindi!");
           fetchProducts(); // ürünleri yeniden çek
         } catch (err) {
           console.error("Silme hatası:", err);
