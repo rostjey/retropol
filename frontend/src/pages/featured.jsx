@@ -10,7 +10,7 @@ const FeaturedPage = () => {
     const fetchFeatured = async () => {
       try {
         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/featured`);
-        setFeatured(res.data.products);
+        setFeatured(res.data.featured || []);
       } catch (err) {
         console.error("Öne çıkanlar yüklenemedi:", err);
       }
