@@ -5,6 +5,8 @@ import axios from "axios";
 
 const FeaturedPage = () => {
   const [featured, setFeatured] = useState([]);
+  const validImage = product.image && product.image.length > 5 ? product.image : "/no-image.png";
+
 
   useEffect(() => {
     const fetchFeatured = async () => {
@@ -33,7 +35,7 @@ const FeaturedPage = () => {
           featured.map((product) => (
             <div key={product._id} className="bg-gray-800 p-4 rounded">
               <img
-                src={product.image || "/no-image.png"}
+                 src={validImage}
                 alt={product.name}
                 className="w-full h-40 object-cover rounded mb-3"
                 onError={(e) => {
