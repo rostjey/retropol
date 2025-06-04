@@ -36,6 +36,12 @@ const FeaturedPage = () => {
                 src={product.image || "/no-image.png"}
                 alt={product.name}
                 className="w-full h-40 object-cover rounded mb-3"
+                onError={(e) => {
+                // Tarayıcı bu onError fonksiyonunu bir daha tetiklemesin
+                e.currentTarget.onerror = null;
+                // Fallback görsel ata
+                e.currentTarget.src = "/no-image.png";
+                }}
               />
               <h3 className="text-xl font-semibold">{product.name}</h3>
               <p className="text-sm text-gray-400">{product.description}</p>
