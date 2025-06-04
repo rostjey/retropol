@@ -10,7 +10,7 @@ const FeaturedPage = () => {
     const fetchFeatured = async () => {
       try {
         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/featured`);
-        setFeatured(res.data.featured || []);
+        setFeatured(res.data);
       } catch (err) {
         console.error("Öne çıkanlar yüklenemedi:", err);
       }
@@ -35,7 +35,6 @@ const FeaturedPage = () => {
               <img
                 src={product.image || "/no-image.png"}
                 alt={product.name}
-                
                 className="w-full h-40 object-cover rounded mb-3"
               />
               <h3 className="text-xl font-semibold">{product.name}</h3>
