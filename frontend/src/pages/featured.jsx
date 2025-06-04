@@ -5,8 +5,6 @@ import axios from "axios";
 
 const FeaturedPage = () => {
   const [featured, setFeatured] = useState([]);
-  const validImage = product.image && product.image.length > 5 ? product.image : "/no-image.png";
-
 
   useEffect(() => {
     const fetchFeatured = async () => {
@@ -32,30 +30,31 @@ const FeaturedPage = () => {
       {/* Ürünler */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {Array.isArray(featured) && featured.length > 0 ? (
-          featured.map((product) => (
+          featured.map((product) => {
+            const validImage = product.image && product.image.length > 5 ? product.image : "/no-image.png";
             <div key={product._id} className="bg-gray-800 p-4 rounded">
               {product.image ? (
-      <img
-          src={product.image}
-          alt={product.name}
-          onError={(e) => {
-          e.currentTarget.onerror = null;
-          e.currentTarget.src = "/no-image.png";
-        }}
-        className="w-full h-40 object-cover rounded mb-3"
-       />
-        ) : (
-        <div className="w-full h-40 bg-gray-700 rounded mb-3 flex items-center justify-center text-gray-400 text-sm">
-        Görsel yok
-        </div>
-        )}
+            <img
+              src={product.image}
+              alt={product.name}
+              onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "/no-image.png";
+            }}
+              className="w-full h-40 object-cover rounded mb-3"
+            />
+            ) : (
+            <div className="w-full h-40 bg-gray-700 rounded mb-3 flex items-center justify-center text-gray-400 text-sm">
+            Görsel yok
+            </div>
+            )}
 
               <h3 className="text-xl font-semibold">{product.name}</h3>
               <p className="text-sm text-gray-400">{product.description}</p>
               <p className="text-sm text-gray-300 mt-2">₺{product.price}</p>
               <p className="text-xs text-gray-500 italic">{product.category}</p>
             </div>
-          ))
+          })
         ) : (
           <p className="text-gray-400 text-center col-span-full">
             Henüz öne çıkan ürün yok.
