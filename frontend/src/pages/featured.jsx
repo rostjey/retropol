@@ -10,7 +10,7 @@ const FeaturedPage = () => {
     const fetchFeatured = async () => {
       try {
         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/featured`);
-        setFeatured(res.data);
+        setFeatured(res.data.products);
       } catch (err) {
         console.error("Öne çıkanlar yüklenemedi:", err);
       }
@@ -33,8 +33,9 @@ const FeaturedPage = () => {
           featured.map((product) => (
             <div key={product._id} className="bg-gray-800 p-4 rounded">
               <img
-                src={product.image}
+                src={product.image || "/no-image.png"}
                 alt={product.name}
+                
                 className="w-full h-40 object-cover rounded mb-3"
               />
               <h3 className="text-xl font-semibold">{product.name}</h3>

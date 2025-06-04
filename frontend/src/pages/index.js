@@ -8,8 +8,9 @@ const CATEGORY_ORDER = ["nargile", "yemek", "içecek", "tatlı"];
 
 export default function HomePage() {
   const [groupedProducts, setGroupedProducts] = useState({});
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [scrollVisible, setScrollVisible] = useState(false);
 
-  // Ref'ler her kategori için
   const refs = {
     nargile: useRef(null),
     yemek: useRef(null),
@@ -19,15 +20,19 @@ export default function HomePage() {
 
   const scrollToCategory = (category) => {
     refs[category]?.current?.scrollIntoView({ behavior: "smooth" });
+    setShowDropdown(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // DÜZELTİLMİŞ HALİ
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`, { 
-         withCredentials: true // 👈 Bu kritik!
-     });
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
+          withCredentials: true,
+        });
         const products = res.data.products;
 
         const grouped = {};
@@ -44,59 +49,97 @@ export default function HomePage() {
     };
 
     fetchProducts();
+
+    const handleScroll = () => {
+      setScrollVisible(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white p-6">
-      <h1 className="text-4xl font-bold mb-8 text-center">Menü</h1>
+    <div className="min-h-screen bg-black text-white p-6 font-sans relative">
+      {/* Başlık */}
+      <h1 className="text-5xl font-extrabold text-emerald-400 mb-10 text-center tracking-tight">
+        Menü
+      </h1>
 
       {/* Butonlar */}
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Link href="/featured">
-          <button className="bg-emerald-600 px-4 py-2 rounded hover:bg-emerald-500">
-            ⭐ Öne Çıkanlar
+          <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
+            Öne Çıkanlar
           </button>
         </Link>
 
-        {/* Scroll butonları */}
-        {CATEGORY_ORDER.map((cat) => (
+        {/* Kategoriler Dropdown */}
+        <div className="relative">
           <button
-            key={cat}
-            onClick={() => scrollToCategory(cat)}
-            className="bg-emerald-600 px-4 py-2 rounded hover:bg-emerald-500"
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="bg-gray-700 hover:bg-gray-600 text-white px-5 py-2 rounded-lg font-semibold shadow transition"
           >
-            📂 {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            Kategoriler
           </button>
-        ))}
+          {showDropdown && (
+            <div className="absolute top-full left-0 mt-2 bg-gray-800 border border-gray-600 rounded shadow z-10 w-40">
+              {CATEGORY_ORDER.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => scrollToCategory(cat)}
+                  className="w-full text-left px-4 py-2 hover:bg-gray-700 capitalize"
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Ürünler */}
+      {/* Ürün Kartları */}
       {CATEGORY_ORDER.map((category) => {
         const items = groupedProducts[category];
         if (!items) return null;
 
         return (
-          <div key={category} ref={refs[category]} className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 capitalize">{category}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div key={category} ref={refs[category]} className="mb-14">
+            <h2 className="text-3xl font-bold text-emerald-300 mb-4 border-l-4 border-emerald-500 pl-3 capitalize">
+              {category}
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {items.map((product) => (
-                <div key={product._id} className="bg-gray-800 p-4 rounded shadow-lg">
-                  {product.image && (
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 object-cover rounded mb-3"
-                    />
-                  )}
-                  <h3 className="text-xl font-bold">{product.name}</h3>
-                  <p className="text-sm text-gray-400 mb-2">{product.description}</p>
-                  <p className="text-emerald-400 text-lg font-semibold">₺{product.price}</p>
+                <div
+                  key={product._id}
+                  className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-emerald-600/30 transition-all duration-300"
+                >
+                  <img
+                    src={product.image || "/no-image.png"}
+                    alt={product.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4 space-y-2">
+                    <h3 className="text-xl font-bold">{product.name}</h3>
+                    <p className="text-gray-400 text-sm">{product.description}</p>
+                    <p className="text-emerald-400 text-lg font-semibold">₺{product.price}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         );
       })}
+
+      {/* Scroll to Top Button */}
+      {scrollVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-full shadow-lg transition"
+        >
+          ↑ Yukarı Çık
+        </button>
+      )}
     </div>
   );
 }
