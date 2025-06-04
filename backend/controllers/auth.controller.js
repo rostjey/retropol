@@ -19,6 +19,7 @@ const storeRefreshToken = async (userId, refreshToken) => {
 };
 
 const setCookies = (res, accessToken, refreshToken) => {
+  console.log("🍪 Set-Cookie çalıştı!")
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
     secure: true,                // sadece https (Render'da zorunlu)
