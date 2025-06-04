@@ -35,7 +35,7 @@ const FeaturedPage = () => {
             <div key={product._id} className="bg-gray-800 p-4 rounded">
               {product.image ? (
             <img
-              src={product.image}
+              src={validImage}
               alt={product.name}
               onError={(e) => {
               e.currentTarget.onerror = null;
