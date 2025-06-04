@@ -34,17 +34,22 @@ const FeaturedPage = () => {
         {Array.isArray(featured) && featured.length > 0 ? (
           featured.map((product) => (
             <div key={product._id} className="bg-gray-800 p-4 rounded">
-              <img
-                 src={validImage}
-                alt={product.name}
-                className="w-full h-40 object-cover rounded mb-3"
-                onError={(e) => {
-                // Tarayıcı bu onError fonksiyonunu bir daha tetiklemesin
-                e.currentTarget.onerror = null;
-                // Fallback görsel ata
-                e.currentTarget.src = "/no-image.png";
-                }}
-              />
+              {product.image ? (
+      <img
+          src={product.image}
+          alt={product.name}
+          onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = "/no-image.png";
+        }}
+        className="w-full h-40 object-cover rounded mb-3"
+       />
+        ) : (
+        <div className="w-full h-40 bg-gray-700 rounded mb-3 flex items-center justify-center text-gray-400 text-sm">
+        Görsel yok
+        </div>
+        )}
+
               <h3 className="text-xl font-semibold">{product.name}</h3>
               <p className="text-sm text-gray-400">{product.description}</p>
               <p className="text-sm text-gray-300 mt-2">₺{product.price}</p>
