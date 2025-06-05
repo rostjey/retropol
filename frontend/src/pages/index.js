@@ -112,7 +112,10 @@ export default function HomePage() {
               {items.map((product) => (
                 <div
                   key={product._id}
-                  className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-emerald-600/30 transition-all duration-300"
+                  className="bg-gray-800 rounded-xl overflow-hidden shadow-lg 
+                  transition-all duration-1000 ease-in-out 
+                  hover:shadow-orange-500/50 
+                  shadow-orange-500/10 animate-[pulseShadow_2s_ease-in-out_infinite]"
                 >
                   <img
                     src={product.image || "/no-image.png"}
@@ -122,8 +125,8 @@ export default function HomePage() {
                   <div className="p-4 space-y-2">
                     <h3 className="text-xl font-bold">{product.name}</h3>
                     <p className="text-gray-400 text-sm">{product.description}</p>
-                    <p className="text-emerald-400 text-lg font-semibold">₺{product.price}</p>
-                  </div>
+                    <p className="text-orange-400 text-lg font-semibold">₺{product.price}</p>
+                    </div>
                 </div>
               ))}
             </div>
