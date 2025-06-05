@@ -104,7 +104,7 @@ export default function HomePage() {
           href="https://www.instagram.com/retropolatakum/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
+          className="flex items-center gap-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-1.5 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
         >
          <FaInstagram size={20} />
          <span className="hidden sm:inline">Instagram</span>
