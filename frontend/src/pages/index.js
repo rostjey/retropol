@@ -61,14 +61,14 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white p-6 font-sans relative">
       {/* Başlık */}
-      <h1 className="text-5xl font-extrabold text-emerald-400 mb-10 text-center tracking-tight">
+      <h1 className="text-5xl font-extrabold text-orange-400 mb-10 text-center tracking-tight">
         Menü
       </h1>
 
       {/* Butonlar */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Link href="/featured">
-          <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
+          <button className="bg-orange-400 hover:bg-orange-300 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
             Öne Çıkanlar
           </button>
         </Link>
@@ -104,7 +104,7 @@ export default function HomePage() {
 
         return (
           <div key={category} ref={refs[category]} className="mb-14">
-            <h2 className="text-3xl font-bold text-emerald-300 mb-4 border-l-4 border-emerald-500 pl-3 capitalize">
+            <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-emerald-500 pl-3 capitalize">
               {category}
             </h2>
 
@@ -138,7 +138,7 @@ export default function HomePage() {
       {scrollVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-full shadow-lg transition"
+          className="fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
         >
           ↑ Yukarı Çık
         </button>
