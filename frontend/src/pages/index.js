@@ -68,7 +68,7 @@ export default function HomePage() {
 
       {/* sticky bar kapsayıcı */}
       <div className="sticky top-0 z-10 backdrop-blur-md bg-black/60 border-b border-white/10
-       flex justify-between items-center p-3">
+       flex justify-center items-center p-3 ">
         {/* Butonlar */}
         <div className="flex flex-wrap justify-center gap-3 items-center">
         <Link href="/featured">
