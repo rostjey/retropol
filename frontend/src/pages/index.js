@@ -104,7 +104,7 @@ export default function HomePage() {
 
         return (
           <div key={category} ref={refs[category]} className="mb-14">
-            <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-emerald-500 pl-3 capitalize">
+            <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3 capitalize">
               {category}
             </h2>
 
@@ -125,7 +125,7 @@ export default function HomePage() {
                   <div className="p-4 space-y-2">
                     <h3 className="text-xl font-bold">{product.name}</h3>
                     <p className="text-gray-400 text-sm">{product.description}</p>
-                    <p className="text-orange-400 text-lg font-semibold">₺{product.price}</p>
+                    <p className="text-emrald-500 text-lg font-semibold">₺{product.price}</p>
                     </div>
                 </div>
               ))}
