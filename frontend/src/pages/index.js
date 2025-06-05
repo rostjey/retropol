@@ -66,9 +66,11 @@ export default function HomePage() {
         Menü
       </h1>
 
-      {/* Butonlar */}
+      {/* sticky bar kapsayıcı */}
       <div className="sticky top-0 z-10 backdrop-blur-md bg-black/60 border-b border-white/10
-      flex justify-between items-center p-4 mb-6">
+       flex justify-between items-center p-4 mb-6 ">
+        {/* Butonlar */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Link href="/featured">
           <button className="bg-orange-400 hover:bg-orange-300 text-white px-5 py-2 rounded-lg font-semibold shadow transition">
             Öne Çıkanlar
@@ -107,6 +109,7 @@ export default function HomePage() {
          <FaInstagram size={20} />
          Instagram
         </a>
+        </div>
       </div>
 
       {/* Ürün Kartları */}
