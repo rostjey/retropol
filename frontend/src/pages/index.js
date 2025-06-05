@@ -107,7 +107,7 @@ export default function HomePage() {
           className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-3 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
         >
          <FaInstagram size={20} />
-         Instagram
+         <span className="hidden sm:inline">Instagram</span>
         </a>
         </div>
       </div>
