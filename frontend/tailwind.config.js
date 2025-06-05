@@ -17,7 +17,7 @@ module.exports = {
               boxShadow: '0 0 0px rgba(255, 165, 0, 0)',
             },
             '50%': {
-              boxShadow: '0 0 100px rgba(255, 165, 0, 1)',
+              boxShadow: '0 0 25px rgba(255, 165, 0, 0.5)',
             },
           },
         },
