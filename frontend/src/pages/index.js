@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { FaInstagram } from "react-icons/fa";
 
 const CATEGORY_ORDER = ["nargile", "yemek", "içecek", "tatlı"];
 
@@ -96,6 +97,16 @@ export default function HomePage() {
             </div>
           )}
         </div>
+
+        <a
+          href="https://www.instagram.com/retropolatakum/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg font-semibold shadow transition hover:opacity-90"
+        >
+         <FaInstagram size={20} />
+         Instagram
+        </a>
       </div>
 
       {/* Ürün Kartları */}
