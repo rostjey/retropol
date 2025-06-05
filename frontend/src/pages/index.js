@@ -112,10 +112,9 @@ export default function HomePage() {
               {items.map((product) => (
                 <div
                   key={product._id}
-                  className="bg-gray-800 rounded-xl overflow-hidden shadow-lg 
-                  transition-all duration-1000 ease-in-out 
-                  hover:shadow-orange-500/50 
-                  shadow-orange-500/10 animate-[pulseShadow_2s_ease-in-out_infinite]"
+                  className="bg-gray-800 rounded-xl overflow-hidden shadow-lg
+                  shadow-orange-500/10 animate-pulseShadow
+                  transition-all duration-1000 ease-in-out"
                 >
                   <img
                     src={product.image || "/no-image.png"}
