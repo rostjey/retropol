@@ -70,7 +70,7 @@ export default function HomePage() {
       <div className="sticky top-0 z-10 backdrop-blur-md bg-black/60 border-b border-white/10
        flex justify-between items-center p-4 mb-6 ">
         {/* Butonlar */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
         <Link href="/featured">
           <button className="bg-orange-400 hover:bg-orange-300 text-white px-3 py-1.5 rounded-lg font-semibold shadow transition">
             Öne Çıkanlar
