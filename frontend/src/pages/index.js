@@ -70,9 +70,9 @@ export default function HomePage() {
       <div className="sticky top-0 z-10 backdrop-blur-md bg-black/60 border-b border-white/10
        flex justify-between items-center p-3">
         {/* Butonlar */}
-        <div className="flex flex-wrap justify-center gap-4 items-center">
+        <div className="flex flex-wrap justify-center gap-3 items-center">
         <Link href="/featured">
-          <button className="bg-orange-400 hover:bg-orange-300 text-white px-5 py-3 rounded-lg font-semibold shadow transition">
+          <button className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition">
             Öne Çıkanlar
           </button>
         </Link>
@@ -81,7 +81,7 @@ export default function HomePage() {
         <div className="relative">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="bg-gray-700 hover:bg-gray-600 text-white px-5 py-3 rounded-lg font-semibold shadow transition"
+            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition"
           >
             Kategoriler
           </button>
@@ -91,7 +91,7 @@ export default function HomePage() {
                 <button
                   key={cat}
                   onClick={() => scrollToCategory(cat)}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-700 capitalize"
+                  className="w-full text-left px-4 py-1.5 hover:bg-gray-700 capitalize"
                 >
                   {cat}
                 </button>
@@ -104,7 +104,7 @@ export default function HomePage() {
           href="https://www.instagram.com/retropolatakum/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-3 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
+          className="flex items-center gap-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
         >
          <FaInstagram size={20} />
          <span className="hidden sm:inline">Instagram</span>
