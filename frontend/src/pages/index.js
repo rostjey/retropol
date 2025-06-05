@@ -125,7 +125,7 @@ export default function HomePage() {
                   <div className="p-4 space-y-2">
                     <h3 className="text-xl font-bold">{product.name}</h3>
                     <p className="text-gray-400 text-sm">{product.description}</p>
-                    <p className="text-emrald-500 text-lg font-semibold">₺{product.price}</p>
+                    <p className="text-emerald-500 text-lg font-semibold">₺{product.price}</p>
                     </div>
                 </div>
               ))}
