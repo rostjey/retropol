@@ -73,7 +73,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/telegram", telegramRoutes); // Telegram bot entegrasyonu
 
-// Eğer frontend dosyaları dist içinde ise üretim modunda render edilecek
+// Eğer frontend dosyaları dist içinde ise üretim modunda render edilecektir
 // Üretim ortamı kontrolünü güncelleyin
 //if (process.env.NODE_ENV === "production") {
   //const frontendPath = path.join(__dirname, "../../frontend/dist"); // Render özel yolu
