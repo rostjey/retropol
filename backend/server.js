@@ -72,7 +72,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/telegram", telegramRoutes); // Telegram bot entegrasyonu
-// app.use("/api/analytics", analyticsRoutes); // grafik kısmı eklenecekse açarız
 
 // Eğer frontend dosyaları dist içinde ise üretim modunda render edilecek
 // Üretim ortamı kontrolünü güncelleyin
