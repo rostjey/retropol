@@ -138,7 +138,7 @@ export default function HomePage() {
               </div>
             )}
           </div>
-
+          {/* Sosyal Medya Linkleri */}
           <a
             href="https://www.instagram.com/retropolatakum/"
             target="_blank"
