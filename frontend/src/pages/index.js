@@ -242,7 +242,7 @@ export default function HomePage() {
       */}
 
       {/* Garsonu Çağır Butonu */}
-      <div className="fixed bottom-6 w-full flex justify-center">
+      <div className="fixed bottom-6 left-4 z-50">
         <button
           onClick={() => setShowCallModal(true)}
           className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
