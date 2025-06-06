@@ -13,6 +13,10 @@ export default function HomePage() {
   const [scrollVisible, setScrollVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  // garson çağırma modalı için state
+  const [showCallModal, setShowCallModal] = useState(false);
+  const [tableInput, setTableInput] = useState("");
+
 
   const refs = {
     nargile: useRef(null),
@@ -32,15 +36,23 @@ export default function HomePage() {
 
   // Garson çağırma fonksiyonu
   const callWaiter = async () => {
+    if (!tableInput.trim()) {
+      alert("Lütfen masa numarasını girin.");
+      return;
+    }
+  
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/telegram/call-waiter`, {
-        tableNumber: 3, // masa numarasını dinamik hale getirebilirsin
+        tableNumber: tableInput.trim(),
       });
-      alert("✅ Garson çağrıldı!");
+      alert(`✅ Garson çağrıldı! Masa: ${tableInput}`);
+      setShowCallModal(false);
+      setTableInput("");
     } catch (err) {
       alert("❌ Garson çağrılamadı.");
     }
   };
+  
   
 
   useEffect(() => {
@@ -199,7 +211,7 @@ export default function HomePage() {
         );
       })}
 
-      {/* Diğer kategoriler */}
+      {/* Diğer kategoriler 
       {groupedProducts['diğer']?.length > 0 && (
         <div ref={refs['diğer']} className="mb-14">
           <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3">
@@ -227,14 +239,15 @@ export default function HomePage() {
           </div>
         </div>
       )}
+      */}
 
       {/* Garsonu Çağır Butonu */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="fixed bottom-6 w-full flex justify-center">
         <button
-          onClick={callWaiter}
-          className="bg-orange-500 hover:bg-orange-400 text-white px-6 py-3 rounded-full shadow-lg transition font-bold text-lg"
+          onClick={() => setShowCallModal(true)}
+          className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
         >
-         🛎️ Garsonu Çağır
+          Garsonu Çağır
         </button>
       </div>
 
@@ -247,6 +260,36 @@ export default function HomePage() {
           ↑ Yukarı Çık
         </button>
       )}
-    </div>
+
+      {/* Garson Çağırma Modal */}
+      {showCallModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+              <div className="bg-gray-800 rounded-xl p-6 w-80 text-center space-y-4">
+                <h2 className="text-xl font-bold text-orange-400">Masa Numaranız</h2>
+                <input
+                type="text"
+                value={tableInput}
+                onChange={(e) => setTableInput(e.target.value)}
+                placeholder="Örn: 3"
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+             />
+            <div className="flex justify-between gap-4 pt-2">
+              <button
+                onClick={() => setShowCallModal(false)}
+                className="flex-1 bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded"
+              >
+                 İptal
+              </button>
+              <button
+                onClick={callWaiter}
+                className="flex-1 bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded"
+              >
+                Çağır
+              </button>
+            </div>
+          </div>
+        </div>
+       )};
+  </div>
   );
 };
