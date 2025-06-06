@@ -30,6 +30,19 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Garson çağırma fonksiyonu
+  const callWaiter = async () => {
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/telegram/call-waiter`, {
+        tableNumber: 3, // masa numarasını dinamik hale getirebilirsin
+      });
+      alert("✅ Garson çağrıldı!");
+    } catch (err) {
+      alert("❌ Garson çağrılamadı.");
+    }
+  };
+  
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -214,6 +227,16 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      {/* Garsonu Çağır Butonu */}
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <button
+          onClick={callWaiter}
+          className="bg-orange-500 hover:bg-orange-400 text-white px-6 py-3 rounded-full shadow-lg transition font-bold text-lg"
+        >
+         🛎️ Garsonu Çağır
+        </button>
+      </div>
 
       {/* Scroll to Top Button */}
       {scrollVisible && (

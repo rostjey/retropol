@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
+import telegramRoutes from "./routes/telegram.route.js";
 
 
 import authRoutes from "./routes/auth.routes.js";
@@ -70,6 +71,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/telegram", telegramRoutes); // Telegram bot entegrasyonu
 // app.use("/api/analytics", analyticsRoutes); // grafik kısmı eklenecekse açarız
 
 // Eğer frontend dosyaları dist içinde ise üretim modunda render edilecek
