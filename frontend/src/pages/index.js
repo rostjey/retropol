@@ -126,7 +126,7 @@ export default function HomePage() {
 
   return (
     <>
-    {/* Arka plan görseli sabit */}
+    {/* Arka plan görseli sabitlendi */}
     <div className="fixed -z-10 inset-0 bg-[url('/deri3.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"></div>
       <main className="relative z-10"> 
       {/* Başlık */}
