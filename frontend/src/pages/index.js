@@ -125,9 +125,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-6 font-sans relative">
+    <div className="min-h-screen bg-transparent text-white p-0 relative">
       {/* Başlık */}
-      <h1 className="text-5xl font-extrabold text-orange-400 mb-10 text-center tracking-tight">
+      <h1 className="text-5xl font-extrabold text-orange-400  text-center tracking-tight backdrop-blur-md bg-black/50 p-4 rounded-lg shadow-lg ">
         Menü
       </h1>
 
