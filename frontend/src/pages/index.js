@@ -125,10 +125,11 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat">
+    <>
+    <div className="min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"/>
       <main className="relative z-10"> 
       {/* Başlık */}
-      <h1 className="text-5xl font-extrabold text-orange-400  text-center tracking-tight backdrop-blur-md bg-black/60 border-white/10 p-4 shadow-lg ">
+      <h1 className="bg-black text-5xl font-extrabold text-orange-400  text-center tracking-tight  p-4 shadow-lg ">
         Menü
       </h1>
 
@@ -292,6 +293,6 @@ export default function HomePage() {
         </div>
        )};
        </main>
-  </div>
+   </>
   );
 };
