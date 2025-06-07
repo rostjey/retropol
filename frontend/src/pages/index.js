@@ -125,9 +125,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-white p-0 relative">
+    <div className="min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 relative">
       {/* Başlık */}
-      <h1 className="text-5xl font-extrabold text-orange-400  text-center tracking-tight backdrop-blur-md bg-black/50 p-4 rounded-lg shadow-lg ">
+      <h1 className="text-5xl font-extrabold text-orange-400  text-center tracking-tight backdrop-blur-md bg-black/60 p-4 shadow-lg ">
         Menü
       </h1>
 

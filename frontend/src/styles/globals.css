@@ -15,14 +15,13 @@
 }
 
 body {
-  background-image: url("/retropolmenu.jpg");
   background-size: cover;         /* Tüm ekranı kapla */
   background-position: center;    /* Ortala */
   background-repeat: no-repeat;   /* Tekrar etme */
   background-attachment: fixed;   /* Sabit arka plan (scroll yaparken sabit kalır) */
   background-color: black;        /* Görsel yüklenmeden önceki renk */
   color: var(--foreground);
-  /*background: var(--background);*/
+  background: var(--background);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
