@@ -57,6 +57,24 @@ const AdminPage = () => {
     };
 
     useEffect(() => {
+        const checkAuth = async () => {
+          try {
+            // Kullanıcı profilini kontrol etmek için korunan bir endpoint
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/profile`, {
+              withCredentials: true
+            });
+    
+            if (!res.data || !res.data.email) {
+              // Kullanıcı verisi gelmediyse giriş yapılmamış demektir
+              router.push("/admin-login");
+            }
+          } catch (err) {
+            console.warn("⛔ Yetkisiz erişim:", err?.response?.data || err);
+            router.push("/admin-login"); // Hata varsa yönlendir
+          }
+        };
+    
+        checkAuth();
         fetchProducts();
     }, []);
 
