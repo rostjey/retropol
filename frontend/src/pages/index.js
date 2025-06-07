@@ -126,7 +126,8 @@ export default function HomePage() {
 
   return (
     <>
-    <div className="min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"/>
+    {/* Arka plan görseli sabit */}
+    <div className="fixed min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"/>
       <main className="relative z-10"> 
       {/* Başlık */}
       <h1 className="bg-black text-5xl font-extrabold text-orange-400  text-center tracking-tight  p-4 shadow-lg ">
