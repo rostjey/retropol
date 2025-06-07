@@ -125,7 +125,8 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 relative bg-cover bg-center bg-no-repeat">
+    <div className="fixed min-h-screen bg-[url('/retropolmenu.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat">
+      <main className="relative z-10"> 
       {/* Başlık */}
       <h1 className="text-5xl font-extrabold text-orange-400  text-center tracking-tight backdrop-blur-md bg-black/60 p-4 shadow-lg ">
         Menü
@@ -146,16 +147,16 @@ export default function HomePage() {
             <button
               onClick={() => setShowDropdown(!showDropdown)}
               className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition"
-            >
+              >
               Kategoriler
             </button>
             {showDropdown && (
               <div className="absolute top-full left-0 mt-2 bg-gray-800 border border-gray-600 rounded shadow z-10 w-40">
                 {CATEGORY_ORDER.map((cat) => (
                   <button
-                    key={cat}
-                    onClick={() => scrollToCategory(cat)}
-                    className="w-full text-left px-4 py-1.5 hover:bg-gray-700 capitalize"
+                  key={cat}
+                  onClick={() => scrollToCategory(cat)}
+                  className="w-full text-left px-4 py-1.5 hover:bg-gray-700 capitalize"
                   >
                     {cat}
                   </button>
@@ -169,7 +170,7 @@ export default function HomePage() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-1.5 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
-          >
+            >
             <FaInstagram size={20} />
             <span className="hidden sm:inline">Instagram</span>
           </a>
@@ -180,7 +181,7 @@ export default function HomePage() {
       {CATEGORY_ORDER.map((category) => {
         const items = groupedProducts[category];
         if (!items || items.length === 0) return null;
-
+        
         return (
           <div key={category} ref={refs[category]} className="mb-14">
             <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3 capitalize">
@@ -190,15 +191,15 @@ export default function HomePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {items.map((product) => (
                 <div
-                  key={product._id}
-                  className="bg-white/10 backdrop-blur-md border border-white/10 hover:shadow-orange-400/30 bg-gray-800 rounded-xl overflow-hidden shadow-lg shadow-orange-500/10 animate-pulseShadow transition-all duration-1000 ease-in-out"
+                key={product._id}
+                className="bg-white/10 backdrop-blur-md border border-white/10 hover:shadow-orange-400/30 bg-gray-800 rounded-xl overflow-hidden shadow-lg shadow-orange-500/10 animate-pulseShadow transition-all duration-1000 ease-in-out"
                 >
                   <img
                     src={product.image || "/no-image.png"}
                     alt={product.name}
                     className="w-full h-48 object-cover"
                     loading="lazy"
-                  />
+                    />
                   <div className="p-4 space-y-2">
                     <h3 className="text-xl font-bold">{product.name}</h3>
                     <p className="text-gray-400 text-sm">{product.description}</p>
@@ -214,39 +215,39 @@ export default function HomePage() {
       {/* Diğer kategoriler 
       {groupedProducts['diğer']?.length > 0 && (
         <div ref={refs['diğer']} className="mb-14">
-          <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3">
-            Diğer Ürünler
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {groupedProducts['diğer'].map((product) => (
-              <div
-                key={product._id}
-                className="bg-white/10 backdrop-blur-md border border-white/10 hover:shadow-orange-400/30 bg-gray-800 rounded-xl overflow-hidden shadow-lg shadow-orange-500/10 animate-pulseShadow transition-all duration-1000 ease-in-out"
-              >
-                <img
-                  src={product.image || "/no-image.png"}
-                  alt={product.name}
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-                <div className="p-4 space-y-2">
-                  <h3 className="text-xl font-bold">{product.name}</h3>
-                  <p className="text-gray-400 text-sm">{product.description}</p>
-                  <p className="text-emerald-500 text-lg font-semibold">₺{product.price}</p>
-                </div>
-              </div>
-            ))}
+        <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3">
+        Diğer Ürünler
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {groupedProducts['diğer'].map((product) => (
+          <div
+          key={product._id}
+          className="bg-white/10 backdrop-blur-md border border-white/10 hover:shadow-orange-400/30 bg-gray-800 rounded-xl overflow-hidden shadow-lg shadow-orange-500/10 animate-pulseShadow transition-all duration-1000 ease-in-out"
+          >
+          <img
+          src={product.image || "/no-image.png"}
+          alt={product.name}
+          className="w-full h-48 object-cover"
+          loading="lazy"
+          />
+          <div className="p-4 space-y-2">
+          <h3 className="text-xl font-bold">{product.name}</h3>
+          <p className="text-gray-400 text-sm">{product.description}</p>
+          <p className="text-emerald-500 text-lg font-semibold">₺{product.price}</p>
           </div>
-        </div>
-      )}
-      */}
+          </div>
+          ))}
+          </div>
+          </div>
+          )}
+          */}
 
       {/* Garsonu Çağır Butonu */}
       <div className="fixed bottom-6 left-4 z-50">
         <button
           onClick={() => setShowCallModal(true)}
           className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
-        >
+          >
           Garsonu Çağır
         </button>
       </div>
@@ -254,8 +255,8 @@ export default function HomePage() {
       {/* Scroll to Top Button */}
       {scrollVisible && (
         <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
         >
           ↑ Yukarı Çık
         </button>
@@ -272,24 +273,25 @@ export default function HomePage() {
                 onChange={(e) => setTableInput(e.target.value)}
                 placeholder="Örn: 3"
                 className="w-full px-4 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
-             />
+                />
             <div className="flex justify-between gap-4 pt-2">
               <button
                 onClick={() => setShowCallModal(false)}
                 className="flex-1 bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded"
-              >
+                >
                  İptal
               </button>
               <button
                 onClick={callWaiter}
                 className="flex-1 bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded"
-              >
+                >
                 Çağır
               </button>
             </div>
           </div>
         </div>
        )};
+       </main>
   </div>
   );
 };
