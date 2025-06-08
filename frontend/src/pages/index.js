@@ -130,8 +130,8 @@ export default function HomePage() {
     <div className="fixed -z-10 inset-0 bg-[url('/deri3.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"></div>
       <main className="relative z-10"> 
       {/* Başlık */}
-      <h1 className="flex items-center justify-center p-0 shadow-lg bg-black">
-       <img src="/retropollogo.jpeg" alt="Logo" className="h-32 w-auto" />
+      <h1 className="flex items-center justify-center p-0 shadow-lg bg-black" style={{ backgroundColor: "#751813" }}>
+       <img src="/retropollogo2.png" alt="Logo" className="h-20 md:h-24 lg:h-32 w-auto mx-auto" />
       </h1>
 
       {/* sticky bar kapsayıcı */}
