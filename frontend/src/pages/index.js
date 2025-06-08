@@ -101,7 +101,7 @@ export default function HomePage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-black text-white p-6 font-sans relative flex items-center justify-center">
-        <div className="animate-pulse text-orange-400 text-xl">Menü yükleniyor...</div>
+        <div className="blackletter animate-pulse text-orange-400 text-xl">Menü yükleniyor...</div>
       </div>
     );
   }
@@ -130,8 +130,8 @@ export default function HomePage() {
     <div className="fixed -z-10 inset-0 bg-[url('/deri3.jpg')] text-white p-0 bg-cover bg-center bg-no-repeat"></div>
       <main className="relative z-10"> 
       {/* Başlık */}
-      <h1 className="bg-black text-5xl font-extrabold text-orange-400  text-center tracking-tight  p-4 shadow-lg ">
-        Menü
+      <h1 className="flex items-center justify-center p-0 shadow-lg bg-black">
+       <img src="/retropollogo.jpeg" alt="Logo" className="h-32 w-auto" />
       </h1>
 
       {/* sticky bar kapsayıcı */}
