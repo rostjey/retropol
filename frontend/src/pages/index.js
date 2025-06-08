@@ -203,7 +203,7 @@ export default function HomePage() {
                     loading="lazy"
                     />
                   <div className="p-4 space-y-2">
-                    <h3 className="text-xl font-bold">{product.name}</h3>
+                    <h3 className="text-white text-xl font-bold">{product.name}</h3>
                     <p className="text-gray-400 text-sm">{product.description}</p>
                     <p className="text-emerald-500 text-lg font-semibold">₺{product.price}</p>
                   </div>
