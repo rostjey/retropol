@@ -139,7 +139,7 @@ export default function HomePage() {
         {/* Butonlar */}
         <div className="flex flex-wrap justify-center gap-3 items-center">
           <Link href="/featured">
-            <button className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition">
+            <button className="blackletter bg-orange-400 hover:bg-orange-300 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition">
               Öne Çıkanlar
             </button>
           </Link>
@@ -148,7 +148,7 @@ export default function HomePage() {
           <div className="relative">
             <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition"
+              className="blackletter bg-gray-700 hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition"
               >
               Kategoriler
             </button>
@@ -174,7 +174,7 @@ export default function HomePage() {
             className="flex items-center gap-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-1.5 py-1.5 rounded-lg font-semibold shadow transition hover:opacity-90"
             >
             <FaInstagram size={20} />
-            <span className="hidden sm:inline">Instagram</span>
+            <span className="blackletter hidden sm:inline">Instagram</span>
           </a>
         </div>
       </div>
@@ -186,7 +186,7 @@ export default function HomePage() {
         
         return (
           <div key={category} ref={refs[category]} className="mb-14">
-            <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3 capitalize">
+            <h2 className="blackletter text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3 capitalize">
               {category}
             </h2>
 
@@ -214,41 +214,11 @@ export default function HomePage() {
         );
       })}
 
-      {/* Diğer kategoriler 
-      {groupedProducts['diğer']?.length > 0 && (
-        <div ref={refs['diğer']} className="mb-14">
-        <h2 className="text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3">
-        Diğer Ürünler
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {groupedProducts['diğer'].map((product) => (
-          <div
-          key={product._id}
-          className="bg-white/10 backdrop-blur-md border border-white/10 hover:shadow-orange-400/30 bg-gray-800 rounded-xl overflow-hidden shadow-lg shadow-orange-500/10 animate-pulseShadow transition-all duration-1000 ease-in-out"
-          >
-          <img
-          src={product.image || "/no-image.png"}
-          alt={product.name}
-          className="w-full h-48 object-cover"
-          loading="lazy"
-          />
-          <div className="p-4 space-y-2">
-          <h3 className="text-xl font-bold">{product.name}</h3>
-          <p className="text-gray-400 text-sm">{product.description}</p>
-          <p className="text-emerald-500 text-lg font-semibold">₺{product.price}</p>
-          </div>
-          </div>
-          ))}
-          </div>
-          </div>
-          )}
-          */}
-
       {/* Garsonu Çağır Butonu */}
       <div className="fixed bottom-6 left-4 z-50">
         <button
           onClick={() => setShowCallModal(true)}
-          className="bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
+          className="blackletter bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
           >
           Garsonu Çağır
         </button>
@@ -258,7 +228,7 @@ export default function HomePage() {
       {scrollVisible && (
         <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
+        className="blackletter fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
         >
           ↑ Yukarı Çık
         </button>
