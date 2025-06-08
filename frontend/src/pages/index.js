@@ -211,7 +211,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-        );
+        )
       })}
 
       {/* Garsonu Çağır Butonu */}
@@ -262,7 +262,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-       )};
+       )}
        </main>
    </>
   );
