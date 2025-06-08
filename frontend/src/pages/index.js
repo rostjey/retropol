@@ -5,7 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 
-const CATEGORY_ORDER = ["nargile", "yemek", "içecek", "tatlı"];
+const CATEGORY_ORDER = ["NARGILE", "YEMEK", "IÇECEK", "TATLI"];
 
 export default function HomePage() {
   const [groupedProducts, setGroupedProducts] = useState({});
@@ -19,10 +19,10 @@ export default function HomePage() {
 
 
   const refs = {
-    nargile: useRef(null),
-    yemek: useRef(null),
-    içecek: useRef(null),
-    tatlı: useRef(null),
+    NARGILE: useRef(null),
+    YEMEK: useRef(null),
+    IÇECEK: useRef(null),
+    TATLI: useRef(null),
   };
 
   const scrollToCategory = (category) => {
@@ -68,14 +68,14 @@ export default function HomePage() {
 
         CATEGORY_ORDER.forEach(category => {
           grouped[category] = products.filter(
-            product => product.category?.toLowerCase() === category
+            product => product.category?.toUpperCase() === category //değişiklik&%&%%&%&%&%&%&%
           );
         });
 
         // Diğer kategoriler
-        grouped['diğer'] = products.filter(
-          product => !CATEGORY_ORDER.includes(product.category?.toLowerCase())
-        );
+        //grouped['diğer'] = products.filter(
+          //product => !CATEGORY_ORDER.includes(product.category?.toUpperCase()) //değişiklik&%&%%&%&%&%&%
+        //);
 
         setGroupedProducts(grouped);
         setError(null);
@@ -153,7 +153,7 @@ export default function HomePage() {
               Kategoriler
             </button>
             {showDropdown && (
-              <div className="absolute top-full left-0 mt-2 bg-gray-800 border border-gray-600 rounded shadow z-10 w-40">
+              <div className="text-white absolute top-full left-0 mt-2 bg-gray-800 border border-gray-600 rounded shadow z-10 w-40">
                 {CATEGORY_ORDER.map((cat) => (
                   <button
                   key={cat}
@@ -186,7 +186,7 @@ export default function HomePage() {
         
         return (
           <div key={category} ref={refs[category]} className="mb-14">
-            <h2 className="blackletter text-3xl font-bold text-orange-400 mb-4 border-l-4 border-orange-400 pl-3 capitalize">
+            <h2 className="blackletter text-3xl font-bold text-retrotext mb-4 border-l-4 border-retrotext pl-3 capitalize">
               {category}
             </h2>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
       <div className="fixed bottom-6 left-4 z-50">
         <button
           onClick={() => setShowCallModal(true)}
-          className="blackletter bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition "
+          className="bg-retrored hover:bg-retrored text-white px-4 py-2 rounded-full shadow-lg transition "
           >
           Garsonu Çağır
         </button>
@@ -228,7 +228,7 @@ export default function HomePage() {
       {scrollVisible && (
         <button
         onClick={scrollToTop}
-        className="blackletter fixed bottom-6 right-6 bg-orange-400 hover:bg-orange-300 text-white px-4 py-2 rounded-full shadow-lg transition"
+        className="fixed bottom-6 right-6 bg-retrored hover:bg-retrored text-white px-4 py-2 rounded-full shadow-lg transition"
         >
           ↑ Yukarı Çık
         </button>
