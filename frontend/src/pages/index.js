@@ -135,11 +135,11 @@ export default function HomePage() {
       </h1>
 
       {/* sticky bar kapsayıcı */}
-      <div className="sticky top-0 z-10 backdrop-blur-md border-b border-white/10 flex justify-center items-center p-3" style={{ backgroundColor: "#751813" }}>
+      <div className="sticky top-0 z-10 backdrop-blur-md border-b border-white/10 flex justify-center items-center p-3 background-black/50 shadow-lg">
         {/* Butonlar */}
         <div className="flex flex-wrap justify-center gap-3 items-center">
           <Link href="/featured">
-            <button className="blackletter bg-orange-400 hover:bg-orange-300 text-white px-4 py-1.5 rounded-lg font-semibold shadow transition">
+            <button className="blackletter text-white px-4 py-1.5 rounded-lg font-semibold shadow transition bg-retrored hover:bg-retrohover">
               Öne Çıkanlar
             </button>
           </Link>
